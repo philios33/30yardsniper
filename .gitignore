@@ -1,0 +1,12 @@
+.env
+/data
+tys.sql
+/tmp/tmp/*
+!/tmp/tmp/.gitkeep
+/tmp/run/*
+!/tmp/run/.gitkeep
+/tmp/lock/*
+!/tmp/lock/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
+/private.md

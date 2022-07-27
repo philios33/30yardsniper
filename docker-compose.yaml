@@ -1,0 +1,55 @@
+version: "3.5"
+services:
+  mysql:
+    container_name: tys-mysql
+    image: mysql:8
+    command: --skip-mysqlx
+    cap_add:
+      - ALL
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - tys
+    volumes:
+      - type: bind
+        source: ./data/mysql
+        target: /var/lib/mysql
+        
+  wordpress:
+    container_name: tys-wp
+    build: .
+    depends_on:
+      - mysql
+    volumes:
+      - type: bind
+        source: ./uploads
+        target: /var/www/html/wp-content/uploads
+      - type: bind
+        source: ./plugins
+        target: /var/www/html/wp-content/plugins
+        read_only: true
+      - type: bind
+        source: ./themes
+        target: /var/www/html/wp-content/themes
+        read_only: true
+      - type: bind
+        source: ./tmp/tmp
+        target: /tmp
+      - type: bind
+        source: ./tmp/lock
+        target: /run/lock/apache2/
+        read_only: true
+      - type: bind
+        source: ./tmp/run
+        target: /run/apache2/
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - tys
+networks:
+  tys:
+    name: tys
+
+  
