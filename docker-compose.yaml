@@ -15,8 +15,8 @@ services:
       - type: bind
         source: ./data/mysql
         target: /var/lib/mysql
-        
-  wordpress:
+
+  thirtyyardsniper:
     container_name: tys-wp
     build: .
     depends_on:
