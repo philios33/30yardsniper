@@ -20,7 +20,7 @@ services:
     container_name: tys-wp
     build: .
     depends_on:
-      - mysql
+      - tys-mysql
     volumes:
       - type: bind
         source: ./uploads
