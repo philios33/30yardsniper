@@ -1,6 +1,6 @@
 version: "3.5"
 services:
-  mysql:
+  tys-mysql:
     container_name: tys-mysql
     image: mysql:8
     command: --skip-mysqlx
@@ -10,7 +10,7 @@ services:
       - .env
     restart: always
     networks:
-      - tys
+      - master
     volumes:
       - type: bind
         source: ./data/mysql
@@ -47,9 +47,9 @@ services:
       - .env
     restart: always
     networks:
-      - tys
+      - master
 networks:
-  tys:
-    name: tys
+  master:
+    name: master
 
   
