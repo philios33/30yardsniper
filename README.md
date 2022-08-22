@@ -6,7 +6,7 @@ Repo for Mike's 30 yard sniper website.  This builds a dockerized wordpress site
 
 ## Docker commands for development
 
-docker build -t tys .
+docker build --network=host -t tys .
 
 docker run --init --rm \
 --env-file ./.env \

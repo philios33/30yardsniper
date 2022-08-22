@@ -10,3 +10,5 @@ tys.sql
 /uploads/*
 !/uploads/.gitkeep
 /private.md
+/themes/*
+!/themes/twentyeleven
